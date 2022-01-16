@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vanilla JavaScript Todo</title>
+  </head>
+  <body>
+    <ul id="todos"></ul>
+
+    <form
+      onsubmit="addTodo(this.elements.todo.value); this.reset(); event.preventDefault()"
+    >
+      <input name="todo" type="text" placeholder="Enter Todo" />
+      <input type="submit" value="Add Todo" />
+    </form>
+
+    <script>
+      const form = document.querySelector('form');
+      const todoList = document.getElementById('todos');
+
+      const existingTodos = JSON.parse(localStorage.getItem('todos')) || [];
+
+      const todoData = [];
+
+      existingTodos.forEach(todo => {
+        addTodo(todo);
+      });
+
+      function createListElement(text) {
+        const li = document.createElement('li');
+        li.textContent = text;
+        return li;
+      }
+
+      function addTodo(todoText) {
+        todoData.push(todoText);
+        todoList.appendChild(createListElement(todoText));
+        localStorage.setItem('todos', JSON.stringify(todoData));
+      }
+    </script>
+  </body>
+</html>

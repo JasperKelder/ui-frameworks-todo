@@ -1,0 +1,28 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine Todo</title>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div
+      x-data="{todos: JSON.parse(localStorage.getItem('todos')) || [], text: ''}"
+      x-effect="localStorage.setItem('todos', JSON.stringify(todos))"
+    >
+      <ul>
+        <template x-for="todo in todos">
+          <li x-text="todo"></li>
+        </template>
+      </ul>
+
+      <form @submit.prevent="todos.push(text),text = ''">
+        <input type="text" x-model="text" placeholder="Enter todo" />
+        <button type="submit">Add Todo</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Todo</title>
+  </head>
+  <body>
+    <div id="root">
+      <ul>
+        <li v-for="todo in todos" v-bind:key="todo">{{ todo }}</li>
+      </ul>
+
+      <form v-on:submit.prevent="addTodo">
+        <input v-model="todoText" placeholder="Enter todo" />
+        <button type="submit">Add Todo</button>
+      </form>
+    </div>
+  </body>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          todos: ['test'],
+          todoText: '',
+        };
+      },
+
+      methods: {
+        addTodo: function () {
+          this.todos = [...this.todos, this.todoText];
+          localStorage.setItem('todos', JSON.stringify(this.todos));
+        },
+      },
+
+      mounted: function () {
+        const existingTodos = localStorage.getItem('todos');
+        this.todos = JSON.parse(existingTodos) || [];
+      },
+    }).mount('#root');
+  </script>
+</html>
