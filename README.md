@@ -1,3 +1,3 @@
-# UI framework comparison
+# UI frameworks ToDo
 
-A comparison of basic todo list implementations built with vanilla JavaScript, Svelte, React, Vue and Alpine.
+ToDo list implementations built with vanilla JavaScript, Svelte, React, Vue and Alpine.

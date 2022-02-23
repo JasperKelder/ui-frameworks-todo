@@ -1,5 +1,5 @@
-## Get started
+### Installation
 
-cd react-todo
-npm install
+cd react-todo  
+npm install  
 npm start

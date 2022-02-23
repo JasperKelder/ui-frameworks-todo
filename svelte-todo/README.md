@@ -1,5 +1,5 @@
-## Get started
+### Installation
 
-cd svelte-todo
-npm install
+cd svelte-todo  
+npm install  
 npm run dev
